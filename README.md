@@ -19,10 +19,10 @@
 - Mac OS (Test)
 - Linux
 
-###配置文件[参考链接](https://github.com/shwenzhang/AndResGuard/blob/master/doc/how_to_work.zh-cn.md)
+### 配置文件[参考链接](https://github.com/shwenzhang/AndResGuard/blob/master/doc/how_to_work.zh-cn.md)
 主要有五大项，即property，whitelist, keepmapping, compress,sign。
 
-####Property项
+#### Property项
 
 Property主要设置一些通用属性：
 
@@ -38,7 +38,7 @@ Linux: 可直接sudo apt-get install p7zip-full。
 
 --keeproot, 是否将res/drawable混淆成r/s
 
-####Whitelist项
+#### Whitelist项
 
 Whitelist主要是用来设置白名单，由于我们代码中某些资源会通过getIdentifier(需要全局搜索所有用法并添加到白名单)或动态加载等方式，我们并不希望混淆这部分的资源ID：
 
@@ -50,7 +50,7 @@ Whitelist主要是用来设置白名单，由于我们代码中某些资源会�
 
 
 
-####Keepmapping项
+#### Keepmapping项
 
 Keepmapping主要用来指定旧的mapping文件，为了保持一致性，我们支持输入旧的mapping文件，可保证同一资源文件在不同版本混淆后的名称保持一致。另一方面由于我们需要支持增量下载方式，如果每次改动都导致所有文件名都会更改，这会导致增量文件增大，但测试证明影响并不大(后面有测试数据)。
 
@@ -60,7 +60,7 @@ Keepmapping主要用来指定旧的mapping文件，为了保持一致性，我�
 
 
 
-####Compress项
+#### Compress项
 
 Compress主要用来指定文件重打包时是否压缩指定文件，默认我们重打包时是保持输入apk每个文件的压缩方式(即Stored或者Deflate)。一般来说，1、在2.3版本以下源文件大于1M不能压缩；2、流媒体不能压缩。对于.png、.jpg是可以压缩的，只是AssetManger读取时候的方式不同。
 
@@ -76,7 +76,7 @@ Compress主要用来指定文件重打包时是否压缩指定文件，默认我
 
 
 
-####Sign项
+#### Sign项
 
 Sign主要是对处理后的文件重签名，需要我们输入签名文件位置，密码等信息。若想使用7z功能就一定要填入相关信息。
 
@@ -92,7 +92,7 @@ Sign主要是对处理后的文件重签名，需要我们输入签名文件位�
 
 
 
-##Android资源混淆工具需要注意的问题
+## Android资源混淆工具需要注意的问题
 compress参数对混淆效果的影响 若指定compess 参数.png、.gif以及*.jpg，resources.arsc会大大减少安装包体积。若要支持Android2.2以及以下版本的设备，resources.arsc需保证压缩前小于1M。
 
 操作系统对7z的影响 实验证明，linux与mac的7z效果更好
